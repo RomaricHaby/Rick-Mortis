@@ -2,26 +2,21 @@ package com.rickmortis.UI.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.rickmortis.R;
 import com.rickmortis.UI.Fragment.CharacterFragment;
 import com.rickmortis.UI.Fragment.EpisodeFragment;
 import com.rickmortis.UI.Fragment.LocationFragment;
 
 
-
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-
-
+public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
     private MaterialToolbar toolbar;
     private BottomNavigationView navigation;
 
@@ -32,15 +27,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         navigation = findViewById(R.id.bottomNavigationView);
         navigation.setItemIconTintList(null);
-        
+
         //loading the default fragment
         loadFragment(new CharacterFragment());
         navigation.setSelectedItemId(R.id.action_character);
 
 
-        navigation.setOnNavigationItemSelectedListener(this);
+        navigation.setOnItemSelectedListener(this);
 
-        toolbar = findViewById(R.id.main_activity_toolbar);
 
 
 

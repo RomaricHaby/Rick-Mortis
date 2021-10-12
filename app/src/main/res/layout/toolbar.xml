@@ -7,13 +7,14 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_activity_toolbar"
-        app:titleTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Cheurlin Dangin" />
+        app:title="Cheurlin Dangin"
+        app:titleTextColor="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
