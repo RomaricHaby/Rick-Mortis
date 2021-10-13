@@ -1,8 +1,8 @@
 package com.rickmortis.Model.Episode;
 
-import com.example.tp_iem.Modele.Info;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.rickmortis.Model.Info;
 
 import java.util.List;
 

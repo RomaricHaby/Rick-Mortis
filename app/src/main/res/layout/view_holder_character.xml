@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/shape_background"
+    android:padding="10dp"
+    android:translationX="@dimen/cardview_compat_inset_shadow">
+
+    <ImageView
+        android:id="@+id/img_vh_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/name_vh_character"
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Name"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/img_vh_character"
+        app:layout_constraintTop_toTopOf="@+id/img_vh_character" />
+
+    <TextView
+        android:id="@+id/species_vh_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Human"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/status_vh_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Unknow"
+        app:layout_constraintStart_toEndOf="@+id/isAliveButton"
+        app:layout_constraintTop_toTopOf="@+id/isAliveButton" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="-"
+        app:layout_constraintStart_toEndOf="@+id/status_vh_character"
+        app:layout_constraintTop_toTopOf="@+id/status_vh_character" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/isAliveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginTop="8dp"
+        android:clickable="false"
+        app:backgroundTint="@color/design_default_color_secondary_variant"
+        app:layout_constraintStart_toStartOf="@+id/name_vh_character"
+        app:layout_constraintTop_toBottomOf="@+id/name_vh_character" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Dernier lieu connu :"
+        app:layout_constraintStart_toStartOf="@+id/name_vh_character"
+        app:layout_constraintTop_toBottomOf="@+id/status_vh_character" />
+
+    <TextView
+        android:id="@+id/last_position_vh_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageView
+        android:id="@+id/iv_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name_vh_character"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_fav" />
+</androidx.constraintlayout.widget.ConstraintLayout>
