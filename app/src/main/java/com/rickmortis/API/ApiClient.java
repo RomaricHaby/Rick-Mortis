@@ -4,6 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
+
     public static String BASE_URL ="https://rickandmortyapi.com/api/";
     private static Retrofit retrofit;
 

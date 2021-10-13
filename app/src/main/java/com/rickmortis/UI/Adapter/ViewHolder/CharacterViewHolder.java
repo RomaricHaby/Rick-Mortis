@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rickmortis.Model.Character.Character;
 import com.rickmortis.R;
+import com.rickmortis.Tools.UserData;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
@@ -62,7 +63,7 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder{
         species.setText(character.getSpecies());
         lastPosition.setText(character.getLocation().getName());
 
-       // updateFav(character);
+        updateFav(character);
 
         switch (character.getStatus()){
             case "Alive":
@@ -78,12 +79,12 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder{
         }
     }
 
-    /*public void updateFav(Character character){
-        if(User.getInstance().isFav(character)){
-            fav.setImageResource(R.drawable.ic_baseline_favorite_24);
+    public void updateFav(Character character){
+        if(UserData.getInstance().isFav(character)){
+            fav.setImageResource(R.drawable.ic_fav);
         }
         else{
-            fav.setImageResource(R.drawable.ic_baseline_not_favorite_24);
+            fav.setImageResource(R.drawable.ic_not_fav);
         }
-    }*/
+    }
 }
