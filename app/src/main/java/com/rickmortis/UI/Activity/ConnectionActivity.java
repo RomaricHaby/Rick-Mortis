@@ -59,13 +59,6 @@ public class ConnectionActivity extends AppCompatActivity {
                 Intent intent = new Intent(ConnectionActivity.this, MainActivity.class);
                 startActivity(intent);
             }
-
-            // ...
-        } else {
-            // Sign in failed. If response is null the user canceled the
-            // sign-in flow using the back button. Otherwise check
-            // response.getError().getErrorCode() and handle the error.
-            // ...
         }
     }
 }
