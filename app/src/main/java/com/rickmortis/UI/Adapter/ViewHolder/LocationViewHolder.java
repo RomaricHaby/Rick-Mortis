@@ -1,6 +1,5 @@
 package com.rickmortis.UI.Adapter.ViewHolder;
 
-import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 

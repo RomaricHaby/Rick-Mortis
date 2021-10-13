@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.rickmortis.Model.Character.Character;
 import com.rickmortis.Model.Location.Location;
 import com.rickmortis.R;
-import com.rickmortis.UI.Activity.MainActivity;
 import com.rickmortis.UI.Adapter.ViewHolder.LocationViewHolder;
 
 import java.util.List;

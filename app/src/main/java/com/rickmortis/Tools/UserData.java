@@ -1,12 +1,8 @@
 package com.rickmortis.Tools;
 
-import android.content.SharedPreferences;
-
-import com.google.gson.Gson;
 import com.rickmortis.Model.Character.Character;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class UserData {
     //Singleton

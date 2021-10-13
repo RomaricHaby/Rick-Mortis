@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.rickmortis.Model.Character.Character;
 import com.rickmortis.R;
 import com.rickmortis.Tools.UserData;
@@ -41,12 +43,11 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
     public void onBindViewHolder(@NonNull CharacterViewHolder viewHolder, @SuppressLint("RecyclerView") int position) {
         viewHolder.updateCharacter(this.characterList.get(position));
 
-
         viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 Character character = characterList.get(position);
-                Log.e("CharacterAdapter", character.toString());
+
                 if (UserData.getInstance().isFav(character)){
                     UserData.getInstance().removeFavCharacter(character);
                 }
@@ -55,7 +56,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
                     activity.saveCharacter();
                 }
 
-                 viewHolder.updateFav(character);
+                viewHolder.updateFav(character);
                 return false;
             }
         });

@@ -1,41 +1,43 @@
 package com.rickmortis.UI.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import com.google.android.material.appbar.MaterialToolbar;
+import android.view.View;
+import android.widget.ImageButton;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
-import com.rickmortis.API.ApiClient;
-import com.rickmortis.API.ApiInterface;
 import com.rickmortis.Model.Character.Character;
 import com.rickmortis.R;
 import com.rickmortis.Tools.UserData;
 import com.rickmortis.UI.Fragment.CharacterFragment;
 import com.rickmortis.UI.Fragment.EpisodeFragment;
+import com.rickmortis.UI.Fragment.FavoritesFragment;
 import com.rickmortis.UI.Fragment.LocationFragment;
 
 import java.util.Map;
-
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
     private static final String CHARACTER_FAV = "CharacterFav";
 
+    private ImageButton favFragment;
+    private  BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initUI();
 
         setNavigation();
         loadCharacter();
@@ -43,9 +45,25 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         loadFragment(new CharacterFragment());
     }
 
+    private void initUI(){
+        favFragment = findViewById(R.id.favButton);
+        navigation = findViewById(R.id.bottomNavigationView);
+
+        favButton();
+    }
+
+    private void favButton(){
+        favFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigation.setSelectedItemId(R.id.action_character);
+                loadFragment(new FavoritesFragment());
+            }
+        });
+    }
+
     //Bottom navigation view
     private void setNavigation(){
-        BottomNavigationView navigation = findViewById(R.id.bottomNavigationView);
         navigation.setItemIconTintList(null);
         navigation.setSelectedItemId(R.id.action_character);
         navigation.setOnItemSelectedListener(this);
@@ -123,6 +141,5 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     protected void onStop() {
         super.onStop();
         FirebaseAuth.getInstance().signOut();
-
     }
 }

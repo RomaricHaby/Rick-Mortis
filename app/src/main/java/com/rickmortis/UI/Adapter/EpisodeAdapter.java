@@ -9,10 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rickmortis.Model.Episode.Episode;
-import com.rickmortis.Model.Location.Location;
 import com.rickmortis.R;
 import com.rickmortis.UI.Adapter.ViewHolder.EpisodeViewHolder;
-import com.rickmortis.UI.Adapter.ViewHolder.LocationViewHolder;
 
 import java.util.List;
 

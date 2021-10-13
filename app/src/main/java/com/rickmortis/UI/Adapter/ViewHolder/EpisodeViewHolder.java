@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rickmortis.Model.Episode.Episode;
-import com.rickmortis.Model.Location.Location;
 import com.rickmortis.R;
 
 public class EpisodeViewHolder extends RecyclerView.ViewHolder{
