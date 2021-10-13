@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LocationFragment extends Fragment {
-    private String TAG ="LocationFragment";
+    private final String TAG ="LocationFragment";
 
     //API
     private ApiInterface apiService;
@@ -59,7 +59,7 @@ public class LocationFragment extends Fragment {
     private void initUI(View view) {
         this.recyclerView = view.findViewById(R.id.recyclerViewLocation);
     }
-    
+
     //Init recycler view
     private void setRecyclerViewLocation(DataLocationApi dataLocationApi) {
         // Create adapter passing in the sample user data

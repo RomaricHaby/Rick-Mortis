@@ -6,6 +6,7 @@
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/drawable/ic_bottom_nav_character.xml" value="0.3828125" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/drawable/ic_bottom_nav_episode.xml" value="0.3828125" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/drawable/ic_fav.xml" value="0.2755208333333333" />
+        <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/drawable/ic_logo.xml" value="0.3828125" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/drawable/ic_not_fav.xml" value="0.2755208333333333" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/drawable/ic_search.xml" value="0.1671875" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/drawable/ic_terre.xml" value="0.3828125" />
@@ -17,6 +18,7 @@
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/layout/fragment_localisation.xml" value="0.33" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/layout/toolbar.xml" value="0.33" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/layout/view_holder_character.xml" value="0.2857789855072464" />
+        <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/layout/view_holder_episode.xml" value="0.33" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/layout/view_holder_location.xml" value="0.2821557971014493" />
         <entry key="..\:/IEM/Rick&amp;Mortis/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25" />
       </map>

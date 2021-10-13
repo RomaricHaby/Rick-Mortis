@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         setNavigation();
         loadCharacter();
         //loading the default fragment

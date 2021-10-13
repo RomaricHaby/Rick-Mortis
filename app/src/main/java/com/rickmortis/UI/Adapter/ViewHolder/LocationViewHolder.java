@@ -23,8 +23,6 @@ public class LocationViewHolder extends RecyclerView.ViewHolder{
         dimension = itemView.findViewById(R.id.dimension_location_tv);
     }
 
-
-
     public void updateLocation(Location location){
         name.setText(location.getName());
         type.setText(location.getType());
