@@ -29,7 +29,7 @@ import retrofit2.Response;
 public class CharacterFragment extends Fragment {
     private static final String TAG = "CharacterFragment";
 
-    private MainActivity activity;
+    private MainActivity mainActivity;
     private RecyclerView recyclerView;
     private CharacterAdapter characterAdapter;
     private EditText serchCharacter;
@@ -59,6 +59,10 @@ public class CharacterFragment extends Fragment {
 
         apiService = ApiClient.getClient().create(ApiInterface.class);
         page = 1;
+
+
+        mainActivity = (MainActivity) getActivity();
+
 
 
         getCharacterCallback();
@@ -140,7 +144,7 @@ public class CharacterFragment extends Fragment {
                     }
                 }
                 else{
-                    if (response.body() != null && getPage() != response.body().getInfo().getPages() + 1) {
+                    if (response.body() != null && page != response.body().getInfo().getPages() + 1) {
                        characterAdapter.addData(response.body().getCharacters());
                        characterAdapter.notifyDataSetChanged();
 
@@ -160,17 +164,11 @@ public class CharacterFragment extends Fragment {
     //Init recycler view
     private void setRecyclerViewCharacter(DataCharacterApi dataCharacterApi){
         // Create adapter passing in the sample user data
-        characterAdapter = new CharacterAdapter(dataCharacterApi.getCharacters(), activity);
+        characterAdapter = new CharacterAdapter(dataCharacterApi.getCharacters(), mainActivity);
         // Attach the adapter to the recyclerview to populate items
         this.recyclerView.setAdapter(characterAdapter);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    public int getPage() {
-        return page;
-    }
 
-    public void setPage(int page) {
-        this.page = page;
-    }
 }

@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
 
         setNavigation();
-
+        loadCharacter();
         //loading the default fragment
         loadFragment(new CharacterFragment());
     }
