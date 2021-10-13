@@ -1,47 +1,42 @@
 package com.rickmortis.UI.Fragment;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import com.rickmortis.API.ApiClient;
 import com.rickmortis.API.ApiInterface;
 import com.rickmortis.Model.Character.DataCharacterApi;
 import com.rickmortis.R;
 import com.rickmortis.UI.Activity.MainActivity;
 import com.rickmortis.UI.Adapter.CharacterAdapter;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class CharacterFragment extends Fragment {
     private static final String TAG = "CharacterFragment";
+    private MainActivity mainActivity;
 
-    private MainActivity activity;
+    //API data
     private RecyclerView recyclerView;
     private CharacterAdapter characterAdapter;
-    private EditText serchCharacter;
-    private ImageButton searchButton;
     private ApiInterface apiService;
-    private int page;
+    private int page = 1;
 
+    //System search
+    private EditText searchCharacter;
+    private ImageButton searchButton;
     private String nameCharacter = "";
 
-
     public CharacterFragment() {}
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,40 +45,57 @@ public class CharacterFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_character, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerViewCharacter);
-        serchCharacter = view.findViewById(R.id.et_name_character);
-        searchButton = view.findViewById(R.id.search_button);
+        mainActivity = (MainActivity) getActivity();
+        initUI(view);
 
+        // init API
         apiService = ApiClient.getClient().create(ApiInterface.class);
-        page = 1;
 
-
+        //Call data API
         getCharacterCallback();
 
+        //set scroll with page
         setRecyclerViewScroll();
-        search();
+
+        //set search system
+        searchCharacter();
 
         return view;
     }
 
-    public void search (){
+    private void initUI(View view){
+        recyclerView = view.findViewById(R.id.recyclerViewCharacter);
+        searchCharacter = view.findViewById(R.id.et_name_character);
+        searchButton = view.findViewById(R.id.search_button);
+    }
+
+    //Init recycler view
+    private void setRecyclerViewCharacter(DataCharacterApi dataCharacterApi){
+        // Create adapter passing in the sample user data
+        characterAdapter = new CharacterAdapter(dataCharacterApi.getCharacters(), mainActivity);
+        // Attach the adapter to the recyclerview to populate items
+        this.recyclerView.setAdapter(characterAdapter);
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    // Button search character
+    private void searchCharacter(){
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!serchCharacter.getText().toString().isEmpty()){
-                    nameCharacter = serchCharacter.getText().toString();
+                if (!searchCharacter.getText().toString().isEmpty()){
+                    nameCharacter = searchCharacter.getText().toString();
                     page = 1;
-                    getCharacterFilter();
+                    getCharacterFilterCallback();
                 }
             }
         });
     }
 
     //Scroll view
-    public void setRecyclerViewScroll(){
+    private void setRecyclerViewScroll(){
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -91,7 +103,7 @@ public class CharacterFragment extends Fragment {
 
                 if (!recyclerView.canScrollVertically(1)) {
                     if (!nameCharacter.equals("")){
-                        getCharacterFilter();
+                        getCharacterFilterCallback();
                     }
                     else{
                         getCharacterCallback();
@@ -102,7 +114,8 @@ public class CharacterFragment extends Fragment {
         });
     }
 
-    private void getCharacterFilter() {
+    //Request API
+    private void getCharacterFilterCallback() {
         this.apiService.getCharacterFilter(nameCharacter).enqueue(new Callback<DataCharacterApi>() {
             @Override
             public void onResponse(Call<DataCharacterApi> call, Response<DataCharacterApi> response) {
@@ -127,9 +140,7 @@ public class CharacterFragment extends Fragment {
             }
         });
     }
-
-    //Request for charact with page
-    public void getCharacterCallback(){
+    private void getCharacterCallback(){
         this.apiService.getCharacter(page).enqueue(new Callback<DataCharacterApi>() {
             @Override
             public void onResponse(Call<DataCharacterApi> call, Response<DataCharacterApi> response) {
@@ -140,7 +151,7 @@ public class CharacterFragment extends Fragment {
                     }
                 }
                 else{
-                    if (response.body() != null && getPage() != response.body().getInfo().getPages() + 1) {
+                    if (response.body() != null && page != response.body().getInfo().getPages() + 1) {
                        characterAdapter.addData(response.body().getCharacters());
                        characterAdapter.notifyDataSetChanged();
 
@@ -154,23 +165,5 @@ public class CharacterFragment extends Fragment {
                 Log.e(TAG, "Throwable" + t);
             }
         });
-    }
-
-
-    //Init recycler view
-    private void setRecyclerViewCharacter(DataCharacterApi dataCharacterApi){
-        // Create adapter passing in the sample user data
-        characterAdapter = new CharacterAdapter(dataCharacterApi.getCharacters(), activity);
-        // Attach the adapter to the recyclerview to populate items
-        this.recyclerView.setAdapter(characterAdapter);
-        this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    }
-
-    public int getPage() {
-        return page;
-    }
-
-    public void setPage(int page) {
-        this.page = page;
     }
 }

@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     !-- BOTTOM NAVIGATION VIEW -->
-    <string name="bottom_navigation_menu_character">Character</string>
-    <string name="bottom_navigation_menu_location">Location</string>
-    <string name="bottom_navigation_menu_episode">Episode</string>
+    <string name="bottom_navigation_menu_character">Personnages</string>
+    <string name="bottom_navigation_menu_location">Lieux</string>
+    <string name="bottom_navigation_menu_episode">Episodes</string>
 </resources>

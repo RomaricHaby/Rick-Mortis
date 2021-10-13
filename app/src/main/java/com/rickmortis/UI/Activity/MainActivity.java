@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.rickmortis.API.ApiClient;
 import com.rickmortis.API.ApiInterface;
@@ -32,14 +33,12 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         setNavigation();
-
+        loadCharacter();
         //loading the default fragment
         loadFragment(new CharacterFragment());
     }
@@ -105,8 +104,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         }
         editor.apply();
     }
-
-
     public void loadCharacter(){
         Gson gson = new Gson();
 
@@ -118,5 +115,14 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             Character character = gson.fromJson(json, Character.class);
             UserData.getInstance().getArrayFavCharac().add(character);
         }
+    }
+
+    //Firebase gestion
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FirebaseAuth.getInstance().signOut();
+
     }
 }

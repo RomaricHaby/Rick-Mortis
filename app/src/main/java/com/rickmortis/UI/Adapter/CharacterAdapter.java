@@ -52,8 +52,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
                 }
                 else{
                     UserData.getInstance().addFavCharac(character);
-                    //TODO enlever com
-                   // activity.saveCharacter();
+                    activity.saveCharacter();
                 }
 
                  viewHolder.updateFav(character);

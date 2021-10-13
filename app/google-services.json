@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1042155745517",
+    "project_id": "rick-f54db",
+    "storage_bucket": "rick-f54db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042155745517:android:511a35a9eb05cd8ff29ce4",
+        "android_client_info": {
+          "package_name": "com.rickmortis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042155745517-up7h62l3lcfs8ud47b5mqm8phkb7h7fb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjgBYye2hcQioeICtr_gAVXkKIwhMZzcg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042155745517-up7h62l3lcfs8ud47b5mqm8phkb7h7fb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
