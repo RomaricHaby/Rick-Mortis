@@ -10,11 +10,15 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
+import com.rickmorty.Database.AppDatabase;
+import com.rickmorty.Database.AsyncTasks.DatabaseCallback;
+import com.rickmorty.Database.RickMortyDao;
 import com.rickmorty.Model.Character.Character;
 import com.rickmorty.R;
 import com.rickmorty.Tools.UserData;
@@ -23,19 +27,30 @@ import com.rickmorty.UI.Fragment.EpisodeFragment;
 import com.rickmorty.UI.Fragment.FavoritesFragment;
 import com.rickmorty.UI.Fragment.LocationFragment;
 
+import java.util.List;
 import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
     private static final String CHARACTER_FAV = "CharacterFav";
 
+    private AppDatabase database;
+    private RickMortyDao rickMortyDao;
+
     private ImageButton favFragment;
     private  BottomNavigationView navigation;
+
+    private DatabaseCallback callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Init database
+        database = Room.databaseBuilder(this, AppDatabase.class, "RickMortyDatabase").build();
+        rickMortyDao = database.rickMortyDao();
+        callback = new DatabaseCallback(this);
 
         initUI();
 
@@ -141,5 +156,12 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     protected void onStop() {
         super.onStop();
         FirebaseAuth.getInstance().signOut();
+    }
+
+
+
+    public void onResponse(List<?> data) {
+
+
     }
 }
