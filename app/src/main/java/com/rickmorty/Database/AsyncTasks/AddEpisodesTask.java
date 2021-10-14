@@ -1,10 +1,8 @@
 package com.rickmorty.Database.AsyncTasks;
 
 import android.os.AsyncTask;
-
 import com.rickmorty.Database.RickMortyDao;
 import com.rickmorty.Model.Episode.DataEpisodeApi;
-import com.rickmorty.Model.Location.DataLocationApi;
 
 
 public class AddEpisodesTask extends AsyncTask<Object, Void, Void> {

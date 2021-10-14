@@ -3,11 +3,9 @@ package com.rickmorty.UI.Activity;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
-import com.rickmorty.Database.AppDatabase;
-import com.rickmorty.Database.AsyncTasks.DatabaseCallback;
 import com.rickmorty.Database.RequestDatabase;
-import com.rickmorty.Database.RickMortyDao;
 import com.rickmorty.Model.Character.Character;
 import com.rickmorty.Model.Episode.Episode;
 import com.rickmorty.Model.Location.Locations;
@@ -38,14 +33,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
     private static final String CHARACTER_FAV = "CharacterFav";
-
-    private AppDatabase database;
-    private RickMortyDao rickMortyDao;
-    private DatabaseCallback callback;
-
     private ImageButton favFragment;
     private  BottomNavigationView navigation;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

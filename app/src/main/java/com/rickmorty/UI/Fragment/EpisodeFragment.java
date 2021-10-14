@@ -13,18 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rickmorty.API.ApiClient;
 import com.rickmorty.API.ApiInterface;
-import com.rickmorty.Database.AsyncTasks.AddCharactersTask;
 import com.rickmorty.Database.AsyncTasks.AddEpisodesTask;
-import com.rickmorty.Database.AsyncTasks.AddLocationsTask;
-import com.rickmorty.Database.AsyncTasks.GetCharactersTask;
 import com.rickmorty.Database.AsyncTasks.GetEpisodesTask;
-import com.rickmorty.Database.AsyncTasks.GetLocationsTask;
 import com.rickmorty.Database.RequestDatabase;
-import com.rickmorty.Model.Character.Character;
 import com.rickmorty.Model.Episode.DataEpisodeApi;
 import com.rickmorty.Model.Episode.Episode;
 import com.rickmorty.R;
-import com.rickmorty.UI.Adapter.CharacterAdapter;
 import com.rickmorty.UI.Adapter.EpisodeAdapter;
 
 import java.util.List;

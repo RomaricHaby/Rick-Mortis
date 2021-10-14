@@ -1,12 +1,10 @@
 package com.rickmorty.Database;
 
 import androidx.room.TypeConverter;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.rickmorty.Model.Character.LocationCharacter;
 import com.rickmorty.Model.Character.OriginCharacter;
-import com.rickmorty.Model.Location.Locations;
 
 import java.util.List;
 

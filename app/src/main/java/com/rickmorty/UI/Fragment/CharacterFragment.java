@@ -7,13 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.rickmorty.API.ApiClient;
 import com.rickmorty.API.ApiInterface;
 import com.rickmorty.Database.AsyncTasks.AddCharactersTask;
@@ -24,12 +21,8 @@ import com.rickmorty.Model.Character.DataCharacterApi;
 import com.rickmorty.R;
 import com.rickmorty.UI.Activity.MainActivity;
 import com.rickmorty.UI.Adapter.CharacterAdapter;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
-
 import retrofit2.Callback;
 import retrofit2.Response;
 
@@ -197,7 +190,6 @@ public class CharacterFragment extends Fragment {
             }
         });
     }
-
 
     //Off line mode
     public void setOffLineMode(List<Character> characterArrayList){

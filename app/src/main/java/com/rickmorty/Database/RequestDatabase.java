@@ -1,10 +1,7 @@
 package com.rickmorty.Database;
 
 
-import android.content.Context;
-
 import androidx.room.Room;
-
 import com.rickmorty.Database.AsyncTasks.DatabaseCallback;
 import com.rickmorty.UI.Activity.MainActivity;
 

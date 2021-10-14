@@ -1,6 +1,5 @@
 package com.rickmorty.Database.AsyncTasks;
 
-
 import com.rickmorty.UI.Activity.MainActivity;
 import java.util.List;
 import javax.security.auth.callback.Callback;
