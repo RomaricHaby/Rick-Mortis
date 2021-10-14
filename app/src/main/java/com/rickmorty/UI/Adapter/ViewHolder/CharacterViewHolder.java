@@ -61,7 +61,7 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder{
         name.setText(character.getName());
         status.setText(character.getStatus());
         species.setText(character.getSpecies());
-        lastPosition.setText(character.getLocation().getName());
+        lastPosition.setText(character.getLocationSimple().getName());
 
         updateFav(character);
 

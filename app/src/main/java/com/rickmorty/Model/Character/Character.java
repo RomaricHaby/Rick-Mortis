@@ -47,9 +47,9 @@ public class Character implements Serializable {
     private OriginCharacter originCharacter;
 
     @SerializedName("location")
-    @ColumnInfo(name = "location")
+    @ColumnInfo(name = "locationsimple")
     @Expose
-    private LocationSimple location;
+    private LocationSimple locationSimple;
 
     @SerializedName("image")
     @ColumnInfo(name = "image")
@@ -127,12 +127,12 @@ public class Character implements Serializable {
         this.originCharacter = originCharacter;
     }
 
-    public LocationSimple getLocation() {
-        return location;
+    public LocationSimple getLocationSimple() {
+        return locationSimple;
     }
 
-    public void setLocation(LocationSimple location) {
-        this.location = location;
+    public void setLocationSimple(LocationSimple locationSimple) {
+        this.locationSimple = locationSimple;
     }
 
     public String getImage() {
