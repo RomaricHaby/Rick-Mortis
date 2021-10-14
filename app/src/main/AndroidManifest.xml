@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rickmortis">
+    package="com.rickmorty">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RickMortis">
 
-        <activity android:name=".UI.Activity.ConnectionActivity"
+        <activity android:name="com.rickmorty.UI.Activity.ConnectionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UI.Activity.MainActivity">
+        <activity android:name="com.rickmorty.UI.Activity.MainActivity">
 
         </activity>
 
