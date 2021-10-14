@@ -7,7 +7,7 @@ import androidx.room.Query;
 
 import com.rickmorty.Model.Character.Character;
 import com.rickmorty.Model.Episode.Episode;
-import com.rickmorty.Model.Location.Location;
+import com.rickmorty.Model.Location.Locations;
 
 import java.util.List;
 
@@ -36,11 +36,11 @@ public interface RickMortyDao {
 
     //region Locations
 
-    @Query("SELECT * FROM location")
-    List<Location> getLocations();
+    @Query("SELECT * FROM Locations")
+    List<Locations> getLocations();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void addAllLocations(List<Location> locations);
+    void addAllLocations(List<Locations> locations);
 
     //endregion
 }

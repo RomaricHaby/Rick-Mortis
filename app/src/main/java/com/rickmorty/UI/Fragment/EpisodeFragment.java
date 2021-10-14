@@ -13,9 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rickmorty.API.ApiClient;
 import com.rickmorty.API.ApiInterface;
+import com.rickmorty.Database.AsyncTasks.AddCharactersTask;
+import com.rickmorty.Database.AsyncTasks.AddEpisodesTask;
+import com.rickmorty.Database.AsyncTasks.AddLocationsTask;
+import com.rickmorty.Database.AsyncTasks.GetCharactersTask;
+import com.rickmorty.Database.AsyncTasks.GetEpisodesTask;
+import com.rickmorty.Database.AsyncTasks.GetLocationsTask;
+import com.rickmorty.Database.RequestDatabase;
+import com.rickmorty.Model.Character.Character;
 import com.rickmorty.Model.Episode.DataEpisodeApi;
+import com.rickmorty.Model.Episode.Episode;
 import com.rickmorty.R;
+import com.rickmorty.UI.Adapter.CharacterAdapter;
 import com.rickmorty.UI.Adapter.EpisodeAdapter;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +43,10 @@ public class EpisodeFragment extends Fragment {
     private int page = 1;
     private RecyclerView recyclerView;
 
+    //Off line mode
+    private static EpisodeFragment instance;
+    private Boolean offLine = false;
+
     public EpisodeFragment() {}
 
     @Override
@@ -43,6 +59,9 @@ public class EpisodeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_episode, container, false);
 
         initUI(view);
+
+        //Off line
+        instance = this;
 
         // init API
         apiService = ApiClient.getClient().create(ApiInterface.class);
@@ -75,8 +94,10 @@ public class EpisodeFragment extends Fragment {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (!recyclerView.canScrollVertically(1)) {
-                    getEpisodeCallback();
+                if (!offLine){
+                    if (!recyclerView.canScrollVertically(1)) {
+                        getEpisodeCallback();
+                    }
                 }
             }
         });
@@ -87,16 +108,21 @@ public class EpisodeFragment extends Fragment {
         this.apiService.getEpisode(page).enqueue(new Callback<DataEpisodeApi>() {
             @Override
             public void onResponse(Call<DataEpisodeApi> call, Response<DataEpisodeApi> response) {
+                offLine = false;
+                AddEpisodesTask task = new AddEpisodesTask();
+
                 //Init recycler view
                 if (page == 1){
                     if (response.body() != null) {
                         setRecyclerViewLocation(response.body());
+                        task.execute(RequestDatabase.getInstance().getCallback(), response.body(), RequestDatabase.getInstance().getRickMortyDao());
                     }
                 }
                 else{
                     if (response.body() != null && page != response.body().getInfo().getPages() + 1) {
                         episodeAdapter.addData(response.body().getResults());
                         episodeAdapter.notifyDataSetChanged();
+                        task.execute(RequestDatabase.getInstance().getCallback(), response.body(), RequestDatabase.getInstance().getRickMortyDao());
                     }
                 }
                 page++;
@@ -105,8 +131,24 @@ public class EpisodeFragment extends Fragment {
             @Override
             public void onFailure(Call<DataEpisodeApi> call, Throwable t) {
                 Log.e(TAG, "Throwable" + t);
+                offLine = true;
+
+                GetEpisodesTask task = new GetEpisodesTask();
+                task.execute(RequestDatabase.getInstance().getCallback(),RequestDatabase.getInstance().getRickMortyDao());
             }
         });
+    }
+
+    //Off line mode
+    public void setOffLineMode(List<Episode> episodeList){
+        episodeAdapter = new EpisodeAdapter(episodeList);
+        // Attach the adapter to the recyclerview to populate items
+        this.recyclerView.setAdapter(episodeAdapter);
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    public static EpisodeFragment getInstance() {
+        return instance;
     }
 
 

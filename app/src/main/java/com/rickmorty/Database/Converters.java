@@ -4,9 +4,9 @@ import androidx.room.TypeConverter;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.rickmorty.Model.Character.LocationSimple;
+import com.rickmorty.Model.Character.LocationCharacter;
 import com.rickmorty.Model.Character.OriginCharacter;
-import com.rickmorty.Model.Location.Location;
+import com.rickmorty.Model.Location.Locations;
 
 import java.util.List;
 
@@ -23,24 +23,16 @@ public class Converters {
     }
 
     @TypeConverter
-    public static Location restoreLocation(String location) {
-        return new Gson().fromJson(location, new TypeToken<Location>() {}.getType());
+    public static LocationCharacter restoreLocation(String location) {
+        return new Gson().fromJson(location, new TypeToken<LocationCharacter>() {}.getType());
     }
 
     @TypeConverter
-    public static String saveLocation(Location location) {
+    public static String saveLocation(LocationCharacter location) {
         return new Gson().toJson(location);
     }
 
-    @TypeConverter
-    public static LocationSimple restoreLocationSimple(String location) {
-        return new Gson().fromJson(location, new TypeToken<Location>() {}.getType());
-    }
 
-    @TypeConverter
-    public static String saveLocationSimple(LocationSimple location) {
-        return new Gson().toJson(location);
-    }
 
     @TypeConverter
     public static OriginCharacter restoreOrigin(String origin) {
