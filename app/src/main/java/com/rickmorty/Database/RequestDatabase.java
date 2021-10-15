@@ -10,7 +10,6 @@ public class RequestDatabase {
     private AppDatabase database;
     private RickMortyDao rickMortyDao;
     private DatabaseCallback callback;
-    private MainActivity mainActivity;
 
     public static RequestDatabase instance = null;
 
@@ -24,11 +23,10 @@ public class RequestDatabase {
     }
 
     public void setDatabase(MainActivity activity){
-        this.mainActivity = activity;
 
-        database = Room.databaseBuilder(mainActivity.getApplicationContext(), AppDatabase.class, "RickMortyDatabase").build();
+        database = Room.databaseBuilder(activity.getApplicationContext(), AppDatabase.class, "RickMortyDatabase").build();
         rickMortyDao = database.rickMortyDao();
-        callback = new DatabaseCallback(mainActivity);
+        callback = new DatabaseCallback(activity);
     }
 
     //Get && Set

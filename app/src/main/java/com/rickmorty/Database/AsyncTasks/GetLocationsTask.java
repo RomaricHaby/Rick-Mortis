@@ -20,7 +20,6 @@ public class GetLocationsTask extends AsyncTask<Object, Void, List<Locations>> {
         return rickMortyDao.getLocations();
     }
 
-
     protected void onPostExecute(List<Locations> locations) {
         callback.onResponse(locations);
     }
