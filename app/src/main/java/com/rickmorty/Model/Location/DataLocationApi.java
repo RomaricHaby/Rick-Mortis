@@ -16,7 +16,7 @@ public class DataLocationApi {
     private Info infoLocation;
     @SerializedName("results")
     @Expose
-    private List<Location> locations = new ArrayList<Location>();
+    private List<Locations> locations = new ArrayList<Locations>();
 
     public Info getInfoLocation() {
         return infoLocation;
@@ -26,11 +26,11 @@ public class DataLocationApi {
         this.infoLocation = infoLocation;
     }
 
-    public List<Location> getLocations() {
+    public List<Locations> getLocations() {
         return locations;
     }
 
-    public void setLocations(List<Location> locations) {
+    public void setLocations(List<Locations> locations) {
         this.locations = locations;
     }
 

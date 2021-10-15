@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.rickmorty.Model.Location.Location;
+import com.rickmorty.Model.Location.Locations;
 import com.rickmorty.R;
 import com.rickmorty.UI.Adapter.ViewHolder.LocationViewHolder;
 
@@ -16,11 +16,11 @@ import java.util.List;
 
 public class LocationAdapter  extends RecyclerView.Adapter<LocationViewHolder> {
 
-    private final List<Location> locationList;
+    private final List<Locations> locationsList;
 
 
-    public LocationAdapter(List<Location> locations) {
-        this.locationList = locations;
+    public LocationAdapter(List<Locations> locations) {
+        this.locationsList = locations;
     }
 
 
@@ -36,15 +36,15 @@ public class LocationAdapter  extends RecyclerView.Adapter<LocationViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull LocationViewHolder viewHolder, int position) {
-        viewHolder.updateLocation(this.locationList.get(position));
+        viewHolder.updateLocation(this.locationsList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return locationList.size();
+        return locationsList.size();
     }
 
-    public void addData(List<Location> list){
-        locationList.addAll(list);
+    public void addData(List<Locations> list){
+        locationsList.addAll(list);
     }
 }

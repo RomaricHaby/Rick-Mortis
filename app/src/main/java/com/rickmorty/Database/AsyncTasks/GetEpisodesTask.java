@@ -1,11 +1,8 @@
 package com.rickmorty.Database.AsyncTasks;
 
 import android.os.AsyncTask;
-
-
 import com.rickmorty.Database.RickMortyDao;
 import com.rickmorty.Model.Episode.Episode;
-
 import java.util.List;
 
 public class GetEpisodesTask extends AsyncTask<Object, Void, List<Episode>> {

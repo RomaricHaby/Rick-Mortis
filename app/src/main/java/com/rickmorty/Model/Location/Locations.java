@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Location {
+public class Locations {
     @SerializedName("id")
     @Expose
     @PrimaryKey

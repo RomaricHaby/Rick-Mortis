@@ -6,7 +6,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.rickmorty.Model.Location.Location;
+import com.rickmorty.Model.Location.Locations;
 import com.rickmorty.R;
 
 public class LocationViewHolder extends RecyclerView.ViewHolder{
@@ -22,9 +22,9 @@ public class LocationViewHolder extends RecyclerView.ViewHolder{
         dimension = itemView.findViewById(R.id.dimension_location_tv);
     }
 
-    public void updateLocation(Location location){
-        name.setText(location.getName());
-        type.setText(location.getType());
-        dimension.setText(location.getDimension());
+    public void updateLocation(Locations locations){
+        name.setText(locations.getName());
+        type.setText(locations.getType());
+        dimension.setText(locations.getDimension());
     }
 }

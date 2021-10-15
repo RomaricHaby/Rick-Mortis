@@ -1,9 +1,6 @@
 package com.rickmorty.Tools;
 
 import com.rickmorty.Model.Character.Character;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 public class UserData {
@@ -60,18 +57,5 @@ public class UserData {
     public ArrayList<Character> getArrayFavCharac() {
         return arrayFavCharac;
     }
-
-    //Internet
-    public boolean isInternetAvailable() {
-        try {
-            InetAddress address = InetAddress.getByName("www.google.com");
-            return !address.equals("");
-        } catch (UnknownHostException e) {
-            // Log error
-        }
-        return false;
-    }
-
-    //
 
 }
